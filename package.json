@@ -1,0 +1,23 @@
+{
+  "name": "askquestions",
+  "version": "1.0.0",
+  "description": "Plataforma de perguntas e respostas ao estilo Ask.fm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjsb/AskQuestions.git"
+  },
+  "author": "João Victor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vjsb/AskQuestions/issues"
+  },
+  "homepage": "https://github.com/vjsb/AskQuestions#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  }
+}
