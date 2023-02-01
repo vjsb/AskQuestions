@@ -17,6 +17,11 @@
         <p>Empresa: <%= empresa %></p>
         <p>Localização: <%= localizacao %></p>
 
+        <% if(msg == true) { %>
+            <h3> Isso é uma mensagem de erro! </h3>
+        <%} else { %>
+            <h3> Não existem erros! </h3>
+        <%}%>
     </html>
 </body>
 </html>
