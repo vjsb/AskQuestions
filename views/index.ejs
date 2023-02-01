@@ -22,6 +22,12 @@
         <%} else { %>
             <h3> Não existem erros! </h3>
         <%}%>
+
+        <% produtos.forEach(function(produto){ %>
+            <hr>
+            <h3><%= produto.nome %></h3>
+            <h4><%= produto.preco%></h4>
+        <% }) %>
     </html>
 </body>
 </html>
