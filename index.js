@@ -14,4 +14,8 @@ app.get("/", function(req, res){
     res.render("index") 
 })
 
+app.post("/salvarformulario", function(req, res){
+    res.send("Formulário salvo!")
+})
+
 app.listen(8080, ()=> {console.log("App executado com sucesso!")})
