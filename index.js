@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const connection = require('./database/database');
 const app = express();
-const perguntaModel = require('./database/Pergunta')
+const Pergunta = require('./database/Pergunta')
 
 //database
 //authenticate para realizar autenticação no banco e then para caso de certo
@@ -37,7 +37,14 @@ app.post("/salvarformulario", function(req, res){
     //conseguimos usar o body aqui por conta do BodyParser, que busca do que enviamos no HTML do formulario
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    res.send("Formulário salvo! Titulo: " + titulo + " " + " Descricao: " + descricao)
+
+    //método create usado para salvar no banco
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(() =>{
+        res.redirect('/');
+    })
 })
 
 app.listen(8080, ()=> {console.log("App executado com sucesso!")})

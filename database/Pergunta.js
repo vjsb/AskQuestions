@@ -15,3 +15,5 @@ const Pergunta = connection.define('perguntas',{
 
 //sincroniza com o banco, não força ficar recriando tabelas e usa o then para confirmar a conexão
 Pergunta.sync({force: false}).then(() => {})
+
+module.exports = Pergunta;
