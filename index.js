@@ -29,8 +29,10 @@ app.get("/perguntar", function(req, res){
 })
 
 app.get("/", function(req, res){
-
-    res.render("index") 
+    Pergunta.findAll({raw: true}).then(perguntas => {
+        console.log(perguntas);
+    })
+    res.render("index")
 })
 
 app.post("/salvarformulario", function(req, res){
