@@ -30,7 +30,9 @@ app.get("/perguntar", function(req, res){
 
 app.get("/", function(req, res){
     //findAll para buscar todas as perguntas, raw=true para só trazer infos importantes e then gerando a lista
-    Pergunta.findAll({raw: true}).then(perguntas => {
+    Pergunta.findAll({raw: true, order: [
+        ['id', 'DESC'] //ordenando id por ordem decrescente
+    ]}).then(perguntas => {
         res.render("index",{
             perguntas: perguntas
         })
