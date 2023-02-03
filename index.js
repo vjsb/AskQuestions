@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const connection = require('./database/database');
 const app = express();
+const perguntaModel = require('./database/Pergunta')
 
 //database
 //authenticate para realizar autenticação no banco e then para caso de certo
