@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 //Rotas
+//render aponta para a pag que possui o arquivo criado em views
 app.get("/perguntar", function(req, res){
     res.render("perguntar")
 })
@@ -50,6 +51,22 @@ app.post("/salvarformulario", function(req, res){
         descricao: descricao
     }).then(() =>{
         res.redirect('/');
+    })
+})
+
+app.get("/pergunta/:id", function(req, res){
+    //método para buscar a pergunta pelo id usando findOne
+    var id = req.params.id;
+    Pergunta.findOne({
+        where: {id: id}
+    }).then(pergunta => {
+        if(pergunta != undefined){
+            res.render("pergunta", {
+                pergunta: pergunta
+            })
+        }else{
+            res.redirect('/')
+        }
     })
 })
 
