@@ -29,10 +29,12 @@ app.get("/perguntar", function(req, res){
 })
 
 app.get("/", function(req, res){
+    //findAll para buscar todas as perguntas, raw=true para só trazer infos importantes e then gerando a lista
     Pergunta.findAll({raw: true}).then(perguntas => {
-        console.log(perguntas);
+        res.render("index",{
+            perguntas: perguntas
+        })
     })
-    res.render("index")
 })
 
 app.post("/salvarformulario", function(req, res){
