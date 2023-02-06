@@ -24,13 +24,16 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 //Rotas
+//render aponta para a pag que possui o arquivo criado em views
 app.get("/perguntar", function(req, res){
     res.render("perguntar")
 })
 
 app.get("/", function(req, res){
     //findAll para buscar todas as perguntas, raw=true para só trazer infos importantes e then gerando a lista
-    Pergunta.findAll({raw: true}).then(perguntas => {
+    Pergunta.findAll({raw: true, order: [
+        ['id', 'DESC'] //ordenando id por ordem decrescente
+    ]}).then(perguntas => {
         res.render("index",{
             perguntas: perguntas
         })
@@ -48,6 +51,22 @@ app.post("/salvarformulario", function(req, res){
         descricao: descricao
     }).then(() =>{
         res.redirect('/');
+    })
+})
+
+app.get("/pergunta/:id", function(req, res){
+    //método para buscar a pergunta pelo id usando findOne
+    var id = req.params.id;
+    Pergunta.findOne({
+        where: {id: id}
+    }).then(pergunta => {
+        if(pergunta != undefined){
+            res.render("pergunta", {
+                pergunta: pergunta
+            })
+        }else{
+            res.redirect('/')
+        }
     })
 })
 
